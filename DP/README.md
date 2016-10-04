@@ -12,6 +12,9 @@
 
 - Dynamic Programming (DP) methods assume that we have a perfect model of the environment's Markov Decision Process (MDP). That's usually not the case in practice, but it's important to study DP anyway.
 - Policy Evaluation: Calculates the state-value function V(s) for a given policy. In DP this is done using a "full backup". At each state we look ahead one step at each possible action and next state. We can only do this because we have a perfect model of the environment.
+	- MC policy evaluation: let the agent act until the terminalstate, and calculate the empirical mean as V(s)
+	- TD policy evaluation: calcuate the empirical mean every step using ```V(St) <- V(St) + alpha(Rt+1 + V(St+1) - V(St))```
+	- MC has high variance and zero bias, while TD has low variance and little bias :point_right: trade-off
 - Full backups are basically the Bellman equations turned into updates.
 - Policy Improvement: Given the correct state-value function for a policy we can act greedily with respect to it (i.e. pick the best action at each state). Then we are guaranteed to improve the policy or keep it fixed if it's already optimal.
 - Policy Iteration: Iteratively perform Policy Evaluation and Policy Improvement until we reach the optimal policy.
